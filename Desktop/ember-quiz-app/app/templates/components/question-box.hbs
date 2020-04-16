@@ -1,0 +1,44 @@
+<div class="card question-box">
+<div class="card-header">
+    <h5>{{id}}.{{" "}}{{headline}}</h5>
+</div>
+<div class="card-body">
+  {{#if (eq questionType "multiple-choice")}}
+      {{#each choices as | choice |}}
+          <div class="form-check">
+              {{#if isMultiple }}
+                  <input class="form-check-input" type="checkbox" value= {{choice.value}} id= {{choice.value}} onchange= {{action "handleChange" value="target.value"}} checked={{choice.selected}}>
+              {{else}}
+                  <input class="form-check-input" type="radio" name="radio" value= {{choice.value}} id= {{choice.value}} onchange= {{action "handleChange" value="target.value" }} checked={{choice.selected}}>
+              {{/if}}
+              <label class="form-check-label" name="radio" for= {{choice.value}}>
+                  {{choice.label}}
+              </label>
+          </div>
+      {{/each}}
+  {{/if}}
+  {{#if (eq questionType "text")}}
+      <div class="form-group">
+          <label for="textarea">{{choice.label}}</label>
+          <textarea class="form-control" id="textarea" rows="3"  value={{selectedValue}} onchange= {{action "handleChange" value="target.value"}}></textarea>
+      </div>
+  {{/if}}
+</div>
+<div class="card-footer">
+    <div class="d-flex justify-content-between align-items-center">
+        <div role="button" {{action "showPrevQuestion" }} title="Bisherige" class="card-action {{if isPrevDisabled "card-action--disable" ""}}">
+            {{svg-jar "if_ArrowLeftCircle_1031539"}}
+        </div>
+        {{#if (not-eq isNextDisabled true)}}
+        <div role="button" {{action "showNextQuestion" }} title="Nächster" class="card-action {{if isNextDisabled "card-action--disable" ""}}">
+            {{svg-jar "if_ArrowRightCircle_1031540"}}
+        </div>
+        {{/if}}
+        {{#if isNextDisabled}}
+             {{#link-to "score-card"  tagName="button" class="btn btn-primary" }}
+            Submit
+        {{/link-to}}
+        {{/if}}
+    </div>
+</div>
+</div>

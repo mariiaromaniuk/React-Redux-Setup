@@ -1,0 +1,16 @@
+{{progress-bar progress=progress}}
+<div class="question-box">
+  {{question-box
+    id=model.id
+    headline=model.headline
+    choices=model.choices
+    isMultiple=isMultiple
+    questionType=model.question_type
+    selectedValue=model.selectedValue
+    onChange=(action "handleChange")
+    isPrevDisabled=isPrevDisabled
+    isNextDisabled=isNextDisabled
+    onShowPrevQuestion=(action "showPrevQuestion")
+    onShowNextQuestion=(action "showNextQuestion")
+  }}
+</div>

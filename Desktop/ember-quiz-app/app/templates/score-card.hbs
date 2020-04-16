@@ -1,0 +1,17 @@
+<div class="container">
+  <br>
+  <br>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4">{{number-box title="Correct" number=model.correctAnswersCount}}</div>
+    <div class="col-md-4">{{number-box title="Wrong" number=model.wrongAnswersCount}}</div>
+  </div>
+  <br>
+  <br>
+  <div class="row d-flex justify-content-end">
+    <p>
+      <button class="btn btn-primary" {{action "startAgain"}} >
+        Take Again
+      </button>
+    </p>
+  </div>
+</div>
